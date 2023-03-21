@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microblog</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img class="logo_image" src="/static/css/microblog-logo.svg" alt="The Microblog logo"/>
+            Microblog
+        </div>
+        <ul class="navbar">
+            <li class="navbar_item">
+                <a class="navbar_link" href="/">Recent</a>
+            </li>
+            <li class="navbar_item">
+                <a class="navbar_link" href="/">Calender</a>
+            </li>
+        </ul>
+    </header>
+    <main class="main">
+        <section class="input"> 
+            <h1 class="text_1">Add new entry</h1>
+            <form class="entry" action="/" method="post">
+                <p class="input_field"> 
+                    <label  for="entries">Entry contents :</label>
+                    <textarea name="content" id="entry" class="text_field" ></textarea>
+                </p>
+                <button class="button">Submit</button>
+            </form>
+        </section>
+        <section>
+            <h1>Recent posts</h1>
+            {% for entries in entriess %}
+            <article class="entries">
+                <div>
+                    <h2 class="entry_title">
+                    {{entries["content"] | truncate(20,true)}}
+                    </h2>
+                    <time class="entry=date" datetime=" {{entries["date"]}} "> • {{entries["new_date"]}}</time>
+                </div>
+                <p class="entry_contents"> {{entries["content"]}} </p>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer_content">
+            <section class="footer_left">
+                <div class="footer_column">
+                    <a class="footer_item" href="//">About</a>
+                    <a class="footer_item" href="//">Terms and conditions</a>
+                </div>
+            </section>
+            <section class="footer_right">
+                <div class="footer_column">
+                    <a a class="footer_item" href="//">Privacy Policy</a>
+                    <a a class="footer_item" href="//">Contact Us </a>
+                </div>
+            </section>
+        </div>
+
+    </footer>
+</body>
+</html>
